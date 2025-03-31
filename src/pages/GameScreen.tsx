@@ -48,7 +48,16 @@ const GameScreen: React.FC = () => {
   // Handle keyboard input for answer
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isGameActive || isGameOver) return;
+      if (isGameOver) return;
+
+      // If feedback is showing, Enter key advances to next question
+      if (feedback && e.key === 'Enter') {
+        nextQuestion();
+        return;
+      }
+
+      // Only process numeric input if the game is active and no feedback is showing
+      if (!isGameActive) return;
 
       if (e.key >= '0' && e.key <= '9') {
         setUserAnswer(userAnswer + e.key);
@@ -63,7 +72,7 @@ const GameScreen: React.FC = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isGameActive, isGameOver, setUserAnswer, submitAnswer, userAnswer]);
+  }, [isGameActive, isGameOver, setUserAnswer, submitAnswer, userAnswer, feedback, nextQuestion]);
 
   // Handle game over
   useEffect(() => {

@@ -87,6 +87,19 @@ interface Question {
       return `${fullKey}`; // Return the full key if no other fallback matches
     }
   };
+
+  // Helper function to group objects with spaces for better counting
+  const groupObjects = (emoji: string, count: number): string => {
+    let result = '';
+    for (let i = 0; i < count; i++) {
+      result += emoji;
+      // Add a space after every 3 objects (except at the end)
+      if ((i + 1) % 3 === 0 && i < count - 1) {
+        result += ' ';
+      }
+    }
+    return result;
+  };
   
   // Level 1 Questions (Grade 1)
   const generateLevel1Question = (id: number): Question => {
@@ -136,7 +149,7 @@ interface Question {
         const count = randomInt(5, 20);
         return {
           id,
-          text: getTranslatedQuestion('questions.counting', { objects: '🎃'.repeat(count) }), // Restore full key
+          text: getTranslatedQuestion('questions.counting', { objects: groupObjects('🎃', count) }), // Use groupObjects helper
           answer: count.toString(),
           explanation: getTranslatedQuestion('explanations.counting'), // Restore full key
           type: 'counting'
@@ -280,7 +293,7 @@ interface Question {
         return {
           id,
           text: getTranslatedQuestion('questions.fractionOf', { numerator, denominator, total: whole }), // Restore full key
-          answer: ((numerator / denominator) * whole).toString(),
+          answer: `${numerator}/${denominator}`,
           explanation: getTranslatedQuestion('explanations.fractions'), // Restore full key
           type: 'fractions'
         };
@@ -349,7 +362,7 @@ interface Question {
         return {
           id,
           text: getTranslatedQuestion('questions.decimalOperation', { num1: a, num2: b, operator: isAddition ? '+' : '-' }), // Restore full key
-          answer: isAddition ? (parseFloat(a) + parseFloat(b)).toFixed(2) : (parseFloat(a) - parseFloat(b)).toFixed(2),
+          answer: (isAddition ? (parseFloat(a) + parseFloat(b)).toFixed(2) : (parseFloat(a) - parseFloat(b)).toFixed(2)).replace('.', ','),
           explanation: getTranslatedQuestion('explanations.decimals'), // Restore full key
           type: 'decimals'
         };
@@ -398,7 +411,7 @@ interface Question {
         return {
           id,
           text: getTranslatedQuestion('questions.decimalMultiplication', { decimal: a, multiplier: b }), // Restore full key
-          answer: (parseFloat(a) * b).toFixed(1),
+          answer: (parseFloat(a) * b).toFixed(1).replace('.', ','),
           explanation: getTranslatedQuestion('explanations.decimals'), // Restore full key
           type: 'decimals'
         };
@@ -510,7 +523,7 @@ interface Question {
         return {
           id,
           text: getTranslatedQuestion(questionKey, { initial, percentage }), // Use full key variable
-          answer: final.toFixed(2), // Use toFixed for potential decimals
+          answer: final.toFixed(2).replace('.', ','), // Use toFixed for potential decimals and replace dot with comma
           explanation: getTranslatedQuestion('explanations.percentages'), // Restore full key
           type: 'percentages'
         };
@@ -545,7 +558,7 @@ interface Question {
         return {
           id,
           text: getTranslatedQuestion('questions.mean', { numbers: numbers.join(', ') }), // Restore full key
-          answer: mean.toFixed(1), // Use toFixed(1) for consistency
+          answer: mean.toFixed(1).replace('.', ','), // Use toFixed(1) for consistency and replace dot with comma
           explanation: getTranslatedQuestion('explanations.statistics'), // Restore full key
           type: 'statistics'
         };

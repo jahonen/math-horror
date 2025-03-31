@@ -41,7 +41,7 @@
       "geometry": "Mieti muodon ominaisuuksia.",
       "time": "Muista miten kello luetaan.",
       "measurement": "Käytä oikeita mittayksiköitä.",
-      "money": "Muunna dollareita ja senttejä oikein.",
+      "money": "Muunna euroja ja senttejä oikein.",
       "area": "Pinta-ala on pituus kertaa leveys.",
       "perimeter": "Piiri on muodon kaikkien sivujen summa.",
       "volume": "Tilavuus on pituus × leveys × korkeus.",
@@ -64,7 +64,7 @@
       "timeHalfPast": "Jos kello näyttää {{hour}}:{{minutes}}, paljonko kello on?",
       "timeQuarterPast": "Jos kello näyttää {{hour}}:{{minutes}}, paljonko kello on?",
       "timeQuarterTo": "Jos kello näyttää {{hour}}:{{minutes}}, paljonko kello on?",
-      "money": "Jos jokin maksaa ${{dollars}}.{{cents}}, kuinka monta senttiä se on yhteensä?",
+      "money": "Jos jokin maksaa €{{dollars}}.{{cents}}, kuinka monta senttiä se on yhteensä?",
       "fractionOf": "Paljonko on {{numerator}}/{{denominator}} luvusta {{total}}?",
       "rectangleArea": "Laske suorakulmion pinta-ala, jonka leveys on {{width}}m ja korkeus {{height}}m.",
       "rectanglePerimeter": "Laske suorakulmion piiri, jonka leveys on {{width}}m ja korkeus {{height}}m.",
@@ -79,7 +79,10 @@
       "volume": "Laske laatikon tilavuus, jonka pituus on {{length}}cm, leveys {{width}}cm ja korkeus {{height}}cm.",
       "ratio": "Jos omenoiden ja appelsiinien suhde on {{a}}:{{b}}, ja omenoita on {{newA}}, montako appelsiinia on?",
       "squareRoot": "Mikä on luvun {{number}} neliöjuuri?",
-      "mean": "Laske näiden lukujen keskiarvo: {{numbers}}"
+      "mean": "Laske näiden lukujen keskiarvo: {{numbers}}",
+      "measurement": {
+        "m_to_cm": "Muunna {{value}} metriä senttimetreiksi."
+      }
     },
     "answers": {
       "timeOClock": "kello {{hour}}",

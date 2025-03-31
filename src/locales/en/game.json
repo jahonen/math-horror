@@ -41,7 +41,7 @@
       "geometry": "Think about the shape properties.",
       "time": "Remember how to read the clock.",
       "measurement": "Use the correct units of measurement.",
-      "money": "Convert between dollars and cents correctly.",
+      "money": "Convert between Euros and cents correctly.",
       "area": "Area is length multiplied by width.",
       "perimeter": "Perimeter is the sum of all sides of a shape.",
       "volume": "Volume is length × width × height.",
@@ -64,7 +64,7 @@
       "timeHalfPast": "If the clock shows {{hour}}:{{minutes}}, what time is it?",
       "timeQuarterPast": "If the clock shows {{hour}}:{{minutes}}, what time is it?",
       "timeQuarterTo": "If the clock shows {{hour}}:{{minutes}}, what time is it?",
-      "money": "If something costs ${{dollars}}.{{cents}}, how many cents is that in total?",
+      "money": "If something costs €{{dollars}}.{{cents}}, how many cents is that in total?",
       "fractionOf": "What is {{numerator}}/{{denominator}} of {{total}}?",
       "rectangleArea": "Find the area of a rectangle with width {{width}}m and height {{height}}m.",
       "rectanglePerimeter": "Find the perimeter of a rectangle with width {{width}}m and height {{height}}m.",
@@ -77,7 +77,10 @@
       "volume": "Find the volume of a box with length {{length}}cm, width {{width}}cm, and height {{height}}cm.",
       "ratio": "If the ratio of apples to oranges is {{a}}:{{b}}, and there are {{newA}} apples, how many oranges are there?",
       "squareRoot": "What is the square root of {{number}}?",
-      "mean": "Find the mean (average) of these numbers: {{numbers}}"
+      "mean": "Find the mean (average) of these numbers: {{numbers}}",
+      "measurement": {
+        "m_to_cm": "Convert {{value}} meters to centimeters."
+      }
     },
     "answers": {
       "timeOClock": "{{hour}} o'clock",

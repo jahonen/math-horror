@@ -175,6 +175,12 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       normalized = normalized.replace('.0', '');
     }
     
+    // Handle numeric values by removing leading and trailing zeros
+    if (!isNaN(parseFloat(normalized))) {
+      // Convert to number and back to string to remove unnecessary zeros
+      normalized = parseFloat(normalized).toString();
+    }
+    
     return normalized.trim();
   };
   

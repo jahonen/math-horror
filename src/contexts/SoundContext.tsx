@@ -1,5 +1,5 @@
 // src/contexts/SoundContext.tsx
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, useMemo } from 'react';
 import { Howl } from 'howler';
 
 // Define sound types
@@ -15,6 +15,9 @@ type SoundType =
   | 'gameOver'
   | 'highScore'
   | 'buttonClick';
+
+// Define sound categories for volume normalization
+type SoundCategory = 'music' | 'feedback' | 'ui' | 'alert';
 
 interface SoundContextType {
   isMuted: boolean;
@@ -42,6 +45,29 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     buttonClick: null
   });
 
+  // Map sounds to categories for volume normalization using useMemo
+  const soundCategories = useMemo<Record<SoundType, SoundCategory>>(() => ({
+    background: 'music',
+    gameStart: 'feedback',
+    correct: 'feedback',
+    incorrect: 'feedback',
+    timeWarning: 'alert',
+    timeOut: 'alert',
+    lifeGained: 'feedback',
+    lifeLost: 'alert',
+    gameOver: 'alert',
+    highScore: 'feedback',
+    buttonClick: 'ui'
+  }), []);
+
+  // Set volume levels for each category using useMemo
+  const categoryVolumes = useMemo<Record<SoundCategory, number>>(() => ({
+    music: 0.3,
+    feedback: 0.5,
+    ui: 0.3,
+    alert: 0.6
+  }), []);
+
   // Initialize sounds
   useEffect(() => {
     const soundFiles: Record<SoundType, string> = {
@@ -62,11 +88,14 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     Object.entries(soundFiles).forEach(([key, path]) => {
       const soundType = key as SoundType;
+      const category = soundCategories[soundType];
+      const volume = categoryVolumes[category];
+      
       loadedSounds[soundType] = new Howl({
         src: [path],
-        volume: soundType === 'background' ? 0.3 : 0.5,
+        volume: volume,
         loop: soundType === 'background',
-        autoplay: soundType === 'background'
+        autoplay: soundType === 'background' && !isMuted
       });
     });
 
@@ -81,7 +110,7 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return () => {
       Object.values(loadedSounds).forEach(sound => sound.stop());
     };
-  }, []);
+  }, [isMuted, soundCategories, categoryVolumes]);
 
   // Update sound state when mute changes
   useEffect(() => {
@@ -100,6 +129,10 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // Play a sound
   const playSound = (sound: SoundType) => {
     if (sounds[sound]) {
+      // Stop the sound first if it's already playing to prevent overlapping
+      if (sounds[sound]?.playing()) {
+        sounds[sound]?.stop();
+      }
       sounds[sound]?.play();
     }
   };
