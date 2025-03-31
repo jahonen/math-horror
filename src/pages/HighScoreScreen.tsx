@@ -41,10 +41,17 @@ const HighScoreScreen: React.FC = () => {
       const scores: HighScore[] = storedScores ? JSON.parse(storedScores) : [];
       setHighScores(scores);
       
-      // Check if this is a high score
-      if (scores.length < 20 || scoreNum > scores[scores.length - 1]?.score) {
+      // Check if this score has already been submitted
+      const submissionKey = `score_submitted_${levelNum}_${scoreNum}`;
+      const alreadySubmitted = localStorage.getItem(submissionKey) === 'true';
+      setScoreSubmitted(alreadySubmitted);
+      
+      // Check if this is a high score and hasn't been submitted yet
+      if (!alreadySubmitted && (scores.length < 20 || scoreNum > scores[scores.length - 1]?.score)) {
         setShowInitialsEntry(true);
         playSound('highScore');
+      } else {
+        setShowInitialsEntry(false);
       }
     }
   }, [location.search, levelNum, playSound]);
@@ -76,6 +83,10 @@ const HighScoreScreen: React.FC = () => {
     
     // Save to localStorage
     localStorage.setItem(`highScores_${levelNum}`, JSON.stringify(topScores));
+    
+    // Mark this score as submitted in localStorage
+    const submissionKey = `score_submitted_${levelNum}_${userScore}`;
+    localStorage.setItem(submissionKey, 'true');
     
     // Update state
     setHighScores(topScores);
