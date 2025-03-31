@@ -1,0 +1,42 @@
+{
+    "hud": {
+      "score": "Score: {{score}}",
+      "lives": "Lives: {{lives}}",
+      "question": "Question {{current}} of {{total}}",
+      "streak": "Streak: {{streak}}",
+      "timeLeft": "Time Left: {{time}}s",
+      "levelLabel": "Level {{level}}"
+    },
+    "actions": {
+      "submit": "Submit",
+      "clear": "Clear",
+      "next": "Next Question",
+      "quit": "Give Up (Scary!)"
+    },
+    "feedback": {
+      "correct": "Great job! That's correct!",
+      "incorrect": "Oops! That's not right. The answer is {{answer}}.",
+      "timeout": "Oh no! Time's up!",
+      "lifeGained": "Amazing! You gained an extra life!",
+      "lifeLost": "You lost a life! Be careful!",
+      "gameOver": "Game Over!",
+      "victory": "Victory! You completed all questions!",
+      "encouragement": [
+        "You're doing great! Keep going!",
+        "You can do this! I believe in you!",
+        "Keep trying! You're getting better!",
+        "Don't give up! You're making progress!",
+        "That's the way! You're getting the hang of it!"
+      ]
+    },
+    "explanations": {
+      "addition": "Add the numbers together.",
+      "subtraction": "Subtract the second number from the first.",
+      "multiplication": "Multiply the numbers together.",
+      "division": "Divide the first number by the second.",
+      "fractions": "Work with the fraction parts carefully.",
+      "geometry": "Think about the shape properties.",
+      "time": "Remember how to read the clock.",
+      "measurement": "Use the correct units of measurement."
+    }
+  }

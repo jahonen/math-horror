@@ -1,0 +1,37 @@
+{
+    "app": {
+      "title": "Math Horror",
+      "subtitle": "Test your math skills... if you dare!",
+      "selectLevel": "Choose your level of fear:",
+      "level": "Level {{level}}",
+      "highScores": "Hall of Fears",
+      "startGame": "Start Game",
+      "languages": {
+        "en": "English",
+        "el": "Greek",
+        "fi": "Finnish"
+      },
+      "loading": "Summoning math monsters...",
+      "credits": "Math Horror Game © 2025"
+    },
+    "levels": {
+      "1": "Spooky Starters (Grade 1)",
+      "2": "Frightful Foundlings (Grade 2)",
+      "3": "Terrifying Thirds (Grade 3)",
+      "4": "Fearsome Fourths (Grade 4)",
+      "5": "Haunting Fifths (Grade 5)",
+      "6": "Sinister Sixths (Grade 6)"
+    },
+    "highScore": {
+      "title": "Top 20 Brave Mathematicians",
+      "headerRank": "Rank",
+      "headerName": "Initials",
+      "headerScore": "Score",
+      "noScores": "No brave souls have conquered this level yet!",
+      "yourScore": "Your score: {{score}}",
+      "newHighScore": "New High Score!",
+      "enterInitials": "Enter your initials (3 letters):",
+      "submit": "Etch your name in the crypt!",
+      "backToMain": "Return to the main chamber"
+    }
+  }

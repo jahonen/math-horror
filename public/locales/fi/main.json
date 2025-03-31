@@ -1,0 +1,37 @@
+{
+    "app": {
+      "title": "Matikka Kauhu",
+      "subtitle": "Testaa matikan taitosi... jos uskallat!",
+      "selectLevel": "Valitse pelkotasosi:",
+      "level": "Taso {{level}}",
+      "highScores": "Pelon Kunniataulu",
+      "startGame": "Aloita Peli",
+      "languages": {
+        "en": "Englanti",
+        "el": "Kreikka",
+        "fi": "Suomi"
+      },
+      "loading": "Kutsutaan matikan hirviöitä...",
+      "credits": "Matikka Kauhu Peli © 2025"
+    },
+    "levels": {
+      "1": "Karmivat Kertalaiset (1. luokka)",
+      "2": "Pelottavat Pikkulaiset (2. luokka)",
+      "3": "Kauheat Kolmoset (3. luokka)",
+      "4": "Kammottavat Neloset (4. luokka)",
+      "5": "Hurjat Vitoset (5. luokka)",
+      "6": "Synkät Kutoset (6. luokka)"
+    },
+    "highScore": {
+      "title": "Top 20 Rohkeaa Matemaatikkoa",
+      "headerRank": "Sija",
+      "headerName": "Nimikirjaimet",
+      "headerScore": "Pisteet",
+      "noScores": "Kukaan rohkea sielu ei ole vielä valloittanut tätä tasoa!",
+      "yourScore": "Sinun pisteesi: {{score}}",
+      "newHighScore": "Uusi Huipputulos!",
+      "enterInitials": "Syötä nimikirjaimesi (3 kirjainta):",
+      "submit": "Kaiverreta nimesi kryptaan!",
+      "backToMain": "Palaa pääkammioon"
+    }
+  }

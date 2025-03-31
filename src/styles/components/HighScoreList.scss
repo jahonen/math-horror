@@ -1,0 +1,122 @@
+// src/styles/components/HighScoreList.scss
+@import '../variables';
+@import '../mixins';
+
+.high-score-list {
+    width: 100%;
+    max-width: 600px;
+    
+    &.empty {
+      text-align: center;
+      padding: 30px;
+      font-size: 1.2rem;
+      font-style: italic;
+      opacity: 0.8;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 5px;
+      overflow: hidden;
+      
+      th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        
+        @include respond-to('small') {
+          padding: 8px 10px;
+        }
+      }
+      
+      th {
+        background-color: $primary-color;
+        color: $text-color;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 1rem;
+        
+        @include respond-to('small') {
+          font-size: 0.9rem;
+        }
+      }
+      
+      tr:nth-child(even) {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+      
+      tr:hover {
+        background-color: rgba(255, 85, 0, 0.2);
+      }
+      
+      .rank {
+        text-align: center;
+        width: 15%;
+        font-weight: bold;
+      }
+      
+      .initials {
+        width: 35%;
+        font-family: monospace;
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+      }
+      
+      .score {
+        width: 50%;
+        text-align: right;
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: $primary-color;
+      }
+      
+      // Special styling for top 3
+      tr:nth-child(1) {
+        .rank, .initials, .score {
+          color: gold;
+          font-size: 1.2rem;
+        }
+      }
+      
+      tr:nth-child(2) {
+        .rank, .initials, .score {
+          color: silver;
+        }
+      }
+      
+      tr:nth-child(3) {
+        .rank, .initials, .score {
+          color: #cd7f32; // bronze
+        }
+      }
+      
+      // Highlight the user's score
+      tr.user-score {
+        background-color: rgba(0, 255, 0, 0.15);
+        animation: pulse 2s infinite;
+        
+        .rank, .initials, .score {
+          color: #00ff00;
+          font-weight: bold;
+        }
+        
+        &:hover {
+          background-color: rgba(0, 255, 0, 0.25);
+        }
+      }
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      background-color: rgba(0, 255, 0, 0.15);
+    }
+    50% {
+      background-color: rgba(0, 255, 0, 0.25);
+    }
+    100% {
+      background-color: rgba(0, 255, 0, 0.15);
+    }
+  }

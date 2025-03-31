@@ -1,0 +1,396 @@
+// src/styles/App.scss
+
+// Import fonts
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Roboto:wght@400;700&display=swap');
+
+// Variables
+$primary-color: #6a0dad;
+$secondary-color: #ff5500;
+$background-color: #1a1a1a;
+$text-color: #ffffff;
+$highlight-color: #00ff00;
+$danger-color: #ff0000;
+$header-font: 'Creepster', cursive;
+$body-font: 'Roboto', sans-serif;
+
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: $body-font;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+// Fullscreen container
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-image: url('/assets/images/horror-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+  }
+  
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Typography
+h1, h2, h3 {
+  font-family: $header-font;
+  color: $secondary-color;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+// Buttons
+button {
+  background-color: $primary-color;
+  color: $text-color;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: $header-font;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+  &:hover {
+    background-color: lighten($primary-color, 10%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  &:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+// Common animations
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+// Responsive utilities
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "small" {
+    @media (max-width: 576px) { @content; }
+  }
+  @else if $breakpoint == "medium" {
+    @media (max-width: 768px) { @content; }
+  }
+  @else if $breakpoint == "large" {
+    @media (max-width: 992px) { @content; }
+  }
+  @else if $breakpoint == "extra-large" {
+    @media (max-width: 1200px) { @content; }
+  }
+}
+
+// Styles for the main screen
+@import './pages/MainScreen.scss';
+@import './pages/GameScreen.scss';
+@import './pages/HighScoreScreen.scss';
+
+// Styles for components
+@import './components/GameHUD.scss';
+@import './components/QuestionDisplay.scss';
+@import './components/NumericKeypad.scss';
+@import './components/GameOver.scss';
+@import './components/HighScoreList.scss';
+@import './components/LanguageSelector.scss';
+
+// src/styles/pages/MainScreen.scss
+.main-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+  
+  &__header {
+    text-align: center;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-in-out;
+    
+    .main-screen__title {
+      font-size: 4rem;
+      color: $secondary-color;
+      text-shadow: 0 0 10px rgba(255, 85, 0, 0.7);
+      animation: pulse 3s infinite;
+      
+      @include respond-to('medium') {
+        font-size: 3rem;
+      }
+      
+      @include respond-to('small') {
+        font-size: 2.5rem;
+      }
+    }
+    
+    .main-screen__subtitle {
+      font-size: 1.5rem;
+      font-style: italic;
+      margin-top: 10px;
+      
+      @include respond-to('small') {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  
+  &__content {
+    display: flex;
+    flex: 1;
+    gap: 30px;
+    
+    @include respond-to('medium') {
+      flex-direction: column;
+    }
+  }
+  
+  &__levels {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      
+      @include respond-to('small') {
+        font-size: 1.5rem;
+      }
+    }
+    
+    .level-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 30px;
+      width: 100%;
+      max-width: 500px;
+      
+      @include respond-to('small') {
+        grid-template-columns: 1fr;
+      }
+      
+      .level-button {
+        font-size: 1.2rem;
+        padding: 15px;
+        text-align: center;
+        
+        &.selected {
+          background-color: $secondary-color;
+          animation: pulse 2s infinite;
+        }
+      }
+    }
+    
+    .start-button {
+      background-color: $highlight-color;
+      color: $background-color;
+      font-size: 1.5rem;
+      padding: 15px 30px;
+      font-weight: bold;
+      animation: pulse 3s infinite;
+    }
+  }
+  
+  &__highscores {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(106, 13, 173, 0.5);
+    
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      
+      @include respond-to('small') {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  
+  &__footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+}
+
+// src/styles/pages/GameScreen.scss
+.game-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px;
+  
+  &.loading {
+    justify-content: center;
+    align-items: center;
+    
+    h2 {
+      font-size: 2rem;
+      animation: pulse 2s infinite;
+    }
+  }
+  
+  .game-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+  }
+  
+  .feedback-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    
+    .feedback-text {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .next-button {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      background-color: $secondary-color;
+    }
+  }
+  
+  .quit-button {
+    align-self: center;
+    margin-top: 20px;
+    background-color: $danger-color;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    
+    &:hover {
+      opacity: 1;
+      background-color: $danger-color;
+    }
+  }
+}
+
+// src/styles/pages/HighScoreScreen.scss
+.high-score-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+  
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-align: center;
+    
+    @include respond-to('small') {
+      font-size: 2rem;
+    }
+  }
+  
+  .your-score {
+    margin-bottom: 20px;
+    text-align: center;
+    
+    h2 {
+      font-size: 2rem;
+      color: $highlight-color;
+      
+      @include respond-to('small') {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  
+  .initials-entry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+    
+    .new-high-score {
+      color: $highlight-color;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+      
+      @include respond-to('small') {
+        font-size: 1.8rem;
+      }
+    }

@@ -1,0 +1,92 @@
+// src/styles/_mixins.scss
+
+// Responsive breakpoints
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+    + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+// Typography helpers
+@mixin heading-text {
+  font-family: $heading-font;
+  font-weight: bold;
+  line-height: 1.2;
+  color: $text-color;
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+@mixin body-text {
+  font-family: $body-font;
+  line-height: 1.5;
+  color: $text-color;
+}
+
+// Buttons
+@mixin button-base {
+  display: inline-block;
+  padding: $spacing-sm $spacing-md;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: $body-font;
+  transition: all $transition-speed $transition-effect;
+  text-align: center;
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+  }
+}
+
+@mixin primary-button {
+  @include button-base;
+  background-color: $primary-color;
+  color: $text-color;
+  
+  &:hover, &:focus {
+    background-color: darken($primary-color, 10%);
+    transform: scale(1.05);
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@mixin secondary-button {
+  @include button-base;
+  background-color: transparent;
+  color: $text-color;
+  border: 1px solid $primary-color;
+  
+  &:hover, &:focus {
+    background-color: rgba($primary-color, 0.2);
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// Horror effects
+@mixin horror-shadow {
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+@mixin horror-border {
+  border: 1px solid $primary-color;
+  border-radius: 4px;
+}
+
+@mixin horror-container {
+  @include horror-border;
+  @include horror-shadow;
+  background-color: rgba($background-color, 0.8);
+  padding: $spacing-md;
+}

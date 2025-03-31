@@ -1,0 +1,275 @@
+// src/components/game/GameHUD.tsx
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useGameContext } from '../../contexts/GameContext';
+import '../../styles/components/GameHUD.scss';
+
+const GameHUD: React.FC = () => {
+  const { t } = useTranslation('game');
+  const { 
+    level, 
+    score, 
+    lives, 
+    streak, 
+    timeLeft, 
+    currentQuestionIndex, 
+    questions 
+  } = useGameContext();
+
+  return (
+    <div className="game-hud">
+      <div className="hud-item level">
+        {t('hud.levelLabel', { level })}
+      </div>
+      <div className="hud-item score">
+        {t('hud.score', { score })}
+      </div>
+      <div className="hud-item lives">
+        {t('hud.lives', { lives })}
+        <div className="lives-icons">
+          {"❤️".repeat(lives)}
+          {"🖤".repeat(3 - lives)}
+        </div>
+      </div>
+      <div className="hud-item question-counter">
+        {t('hud.question', { current: currentQuestionIndex + 1, total: questions.length })}
+      </div>
+      <div className="hud-item streak">
+        {t('hud.streak', { streak })}
+      </div>
+      <div className={`hud-item timer ${timeLeft <= 10 ? 'warning' : ''}`}>
+        {t('hud.timeLeft', { time: timeLeft })}
+      </div>
+    </div>
+  );
+};
+
+export default GameHUD;
+
+// src/components/game/QuestionDisplay.tsx
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import '../../styles/components/QuestionDisplay.scss';
+
+interface Question {
+  id: number;
+  text: string;
+  answer: string;
+  explanation: string;
+  type: string;
+}
+
+interface QuestionDisplayProps {
+  question: Question;
+  userAnswer: string;
+  feedback: string;
+}
+
+const QuestionDisplay: React.FC<QuestionDisplayProps> = ({ 
+  question, 
+  userAnswer, 
+  feedback 
+}) => {
+  const { t } = useTranslation('game');
+  
+  return (
+    <div className="question-display">
+      <div className="question-text">
+        <h2>{question.text}</h2>
+      </div>
+      
+      <div className="explanation">
+        <p>{t(`explanations.${question.explanation}`)}</p>
+      </div>
+      
+      <div className="answer-container">
+        <div className="answer-input">
+          <div className="answer-display">
+            {userAnswer || '_'}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default QuestionDisplay;
+
+// src/components/game/NumericKeypad.tsx
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import '../../styles/components/NumericKeypad.scss';
+
+interface NumericKeypadProps {
+  onInput: (value: string) => void;
+}
+
+const NumericKeypad: React.FC<NumericKeypadProps> = ({ onInput }) => {
+  const { t } = useTranslation('game');
+  
+  const buttons = [
+    '1', '2', '3',
+    '4', '5', '6',
+    '7', '8', '9',
+    '.', '0', 'backspace'
+  ];
+  
+  return (
+    <div className="numeric-keypad">
+      <div className="keypad-grid">
+        {buttons.map((btn) => (
+          <button
+            key={btn}
+            className={`keypad-button ${btn === 'backspace' ? 'backspace' : ''}`}
+            onClick={() => onInput(btn)}
+          >
+            {btn === 'backspace' ? '⌫' : btn}
+          </button>
+        ))}
+      </div>
+      <button 
+        className="keypad-submit" 
+        onClick={() => onInput('submit')}
+      >
+        {t('actions.submit')}
+      </button>
+    </div>
+  );
+};
+
+export default NumericKeypad;
+
+// src/components/game/GameOver.tsx
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useGameContext } from '../../contexts/GameContext';
+import '../../styles/components/GameOver.scss';
+
+interface GameOverProps {
+  onReturn: () => void;
+}
+
+const GameOver: React.FC<GameOverProps> = ({ onReturn }) => {
+  const { t } = useTranslation('game');
+  const { score, lives, currentQuestionIndex, questions } = useGameContext();
+  
+  const isVictory = currentQuestionIndex >= questions.length - 1;
+  
+  return (
+    <div className="game-over">
+      <h1>{isVictory ? t('feedback.victory') : t('feedback.gameOver')}</h1>
+      
+      <div className="score-summary">
+        <p className="final-score">{t('hud.score', { score })}</p>
+        <p className="questions-answered">
+          {t('hud.question', { current: currentQuestionIndex + 1, total: questions.length })}
+        </p>
+        <p className="lives-remaining">
+          {t('hud.lives', { lives })}
+          <span className="lives-icons">
+            {"❤️".repeat(lives)}
+            {"🖤".repeat(3 - lives)}
+          </span>
+        </p>
+      </div>
+      
+      <button className="return-button" onClick={onReturn}>
+        {t('highScore.backToMain')}
+      </button>
+    </div>
+  );
+};
+
+export default GameOver;
+
+// src/components/HighScoreList.tsx
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import '../styles/components/HighScoreList.scss';
+
+interface HighScore {
+  initials: string;
+  score: number;
+  date: number;
+}
+
+interface HighScoreListProps {
+  level: number;
+}
+
+const HighScoreList: React.FC<HighScoreListProps> = ({ level }) => {
+  const { t } = useTranslation();
+  const [highScores, setHighScores] = useState<HighScore[]>([]);
+  
+  useEffect(() => {
+    // Load high scores from localStorage
+    const storedScores = localStorage.getItem(`highScores_${level}`);
+    if (storedScores) {
+      const scores: HighScore[] = JSON.parse(storedScores);
+      setHighScores(scores);
+    } else {
+      setHighScores([]);
+    }
+  }, [level]);
+  
+  if (highScores.length === 0) {
+    return (
+      <div className="high-score-list empty">
+        <p>{t('highScore.noScores')}</p>
+      </div>
+    );
+  }
+  
+  return (
+    <div className="high-score-list">
+      <table>
+        <thead>
+          <tr>
+            <th>{t('highScore.headerRank')}</th>
+            <th>{t('highScore.headerName')}</th>
+            <th>{t('highScore.headerScore')}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {highScores.map((score, index) => (
+            <tr key={`${score.initials}-${score.date}`}>
+              <td className="rank">{index + 1}</td>
+              <td className="initials">{score.initials}</td>
+              <td className="score">{score.score}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default HighScoreList;
+
+// src/components/ui/LanguageSelector.tsx
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import '../../styles/components/LanguageSelector.scss';
+
+const LanguageSelector: React.FC = () => {
+  const { i18n, t } = useTranslation();
+  
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
+  
+  return (
+    <div className="language-selector">
+      <select 
+        value={i18n.language} 
+        onChange={(e) => changeLanguage(e.target.value)}
+      >
+        <option value="en">{t('app.languages.en')}</option>
+        <option value="el">{t('app.languages.el')}</option>
+        <option value="fi">{t('app.languages.fi')}</option>
+      </select>
+    </div>
+  );
+};
+
+export default LanguageSelector;

@@ -1,0 +1,82 @@
+// src/styles/components/GameHUD.scss
+@import '../variables';
+@import '../mixins';
+
+.game-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 1rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  color: $text-color;
+  border: 1px solid rgba($primary-color, 0.5);
+  
+  .hud-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    
+    .hud-label {
+      font-size: 0.75rem;
+      margin-bottom: 0.25rem;
+      opacity: 0.8;
+    }
+    
+    .hud-value {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+    
+    &.level .hud-value,
+    &.score .hud-value {
+      color: $accent-color;
+    }
+    
+    &.lives {
+      .lives-icons {
+        display: flex;
+        gap: 0.25rem;
+        font-size: 1.2rem;
+        
+        .life-icon {
+          color: $primary-color;
+          
+          &.lost {
+            opacity: 0.3;
+          }
+        }
+      }
+    }
+    
+    &.timer {
+      .hud-value {
+        &.warning {
+          color: #ffcc00;
+          animation: pulse 1s infinite;
+        }
+        
+        &.danger {
+          color: $error-color;
+          animation: pulse 0.5s infinite;
+        }
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}

@@ -1,0 +1,52 @@
+// src/styles/components/NumericKeypad.scss
+@import '../variables';
+@import '../mixins';
+
+.numeric-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  max-width: 300px;
+  margin: 0 auto;
+  
+  .keypad-button {
+    @include secondary-button;
+    height: 60px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.3);
+    
+    &:hover {
+      background-color: $primary-color;
+      color: $background-color;
+    }
+    
+    &.symbol {
+      background-color: rgba(30, 30, 30, 0.7);
+      font-weight: bold;
+      font-size: 1.8rem;
+      
+      &:hover {
+        background-color: $accent-color;
+      }
+    }
+    
+    &.submit {
+      grid-column: span 2;
+      background-color: $primary-color;
+      
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+    
+    &.backspace {
+      font-size: 1.6rem;
+      background-color: $secondary-color;
+      
+      &:hover {
+        background-color: darken($secondary-color, 10%);
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+    "hud": {
+      "score": "Pisteet: {{score}}",
+      "lives": "Elämät: {{lives}}",
+      "question": "Kysymys {{current}} / {{total}}",
+      "streak": "Putki: {{streak}}",
+      "timeLeft": "Aikaa jäljellä: {{time}}s",
+      "levelLabel": "Taso {{level}}"
+    },
+    "actions": {
+      "submit": "Lähetä",
+      "clear": "Tyhjennä",
+      "next": "Seuraava Kysymys",
+      "quit": "Luovuta (Pelottavaa!)"
+    },
+    "feedback": {
+      "correct": "Hienoa työtä! Se on oikein!",
+      "incorrect": "Hups! Se ei ole oikein. Vastaus on {{answer}}.",
+      "timeout": "Voi ei! Aika loppui!",
+      "lifeGained": "Mahtavaa! Sait ylimääräisen elämän!",
+      "lifeLost": "Menetit elämän! Ole varovainen!",
+      "gameOver": "Peli Päättyi!",
+      "victory": "Voitto! Selvisit kaikista kysymyksistä!",
+      "encouragement": [
+        "Pärjäät hienosti! Jatka samaan malliin!",
+        "Sinä pystyt tähän! Uskon sinuun!",
+        "Jatka yrittämistä! Tulet koko ajan paremmaksi!",
+        "Älä luovuta! Edistyt hienosti!",
+        "Juuri niin! Alat ymmärtää tämän!"
+      ]
+    },
+    "explanations": {
+      "addition": "Laske luvut yhteen.",
+      "subtraction": "Vähennä toinen luku ensimmäisestä.",
+      "multiplication": "Kerro luvut keskenään.",
+      "division": "Jaa ensimmäinen luku toisella luvulla.",
+      "fractions": "Käsittele murtolukujen osia huolellisesti.",
+      "geometry": "Mieti muodon ominaisuuksia.",
+      "time": "Muista miten kello luetaan.",
+      "measurement": "Käytä oikeita mittayksiköitä."
+    }
+  }

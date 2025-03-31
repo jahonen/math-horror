@@ -1,0 +1,96 @@
+{
+    "hud": {
+      "score": "Pisteet: {{score}}",
+      "lives": "Elämät: {{lives}}",
+      "question": "Kysymys {{current}} / {{total}}",
+      "streak": "Putki: {{streak}}",
+      "timeLeft": "Aikaa jäljellä: {{time}}s",
+      "levelLabel": "Taso {{level}}"
+    },
+    "actions": {
+      "submit": "Lähetä",
+      "clear": "Tyhjennä",
+      "next": "Seuraava Kysymys",
+      "quit": "Luovuta (Pelottavaa!)",
+      "playAgain": "Pelaa Uudelleen",
+      "answer": "Vastauksesi:",
+      "returnToMenu": "Takaisin valikkoon"
+    },
+    "feedback": {
+      "correct": "Hienoa työtä! Se on oikein!",
+      "incorrect": "Hups! Se ei ole oikein. Vastaus on {{answer}}.",
+      "timeout": "Voi ei! Aika loppui!",
+      "lifeGained": "Mahtavaa! Sait ylimääräisen elämän!",
+      "lifeLost": "Menetit elämän! Ole varovainen!",
+      "gameOver": "Peli Päättyi!",
+      "victory": "Voitto! Selvisit kaikista kysymyksistä!",
+      "encouragement": [
+        "Pärjäät hienosti! Jatka samaan malliin!",
+        "Sinä pystyt tähän! Uskon sinuun!",
+        "Jatka yrittämistä! Tulet koko ajan paremmaksi!",
+        "Älä luovuta! Edistyt hienosti!",
+        "Juuri niin! Alat ymmärtää tämän!"
+      ]
+    },
+    "explanations": {
+      "addition": "Laske luvut yhteen.",
+      "subtraction": "Vähennä toinen luku ensimmäisestä.",
+      "multiplication": "Kerro luvut keskenään.",
+      "division": "Jaa ensimmäinen luku toisella luvulla.",
+      "fractions": "Käsittele murtolukujen osia huolellisesti.",
+      "geometry": "Mieti muodon ominaisuuksia.",
+      "time": "Muista miten kello luetaan.",
+      "measurement": "Käytä oikeita mittayksiköitä.",
+      "money": "Muunna dollareita ja senttejä oikein.",
+      "area": "Pinta-ala on pituus kertaa leveys.",
+      "perimeter": "Piiri on muodon kaikkien sivujen summa.",
+      "volume": "Tilavuus on pituus × leveys × korkeus.",
+      "decimals": "Ole tarkka desimaalien kanssa.",
+      "percentages": "Prosentti on osia sadasta.",
+      "algebra": "Ratkaise tuntematon muuttuja.",
+      "ratios": "Vertaa määriä samassa suhteessa.",
+      "squareRoot": "Löydä luku, joka kerrottuna itsellään antaa alkuperäisen luvun.",
+      "statistics": "Analysoi ja tulkitse numeerista dataa.",
+      "counting": "Laske huolellisesti ja järjestelmällisesti."
+    },
+    "questions": {
+      "addition": "{{a}} + {{b}} = ?",
+      "subtraction": "{{a}} - {{b}} = ?",
+      "multiplication": "{{a}} × {{b}} = ?",
+      "division": "{{a}} ÷ {{b}} = ?",
+      "shapeSides": "Montako sivua on muodolla {{shape}}?",
+      "counting": "Laske esineet: {{objects}}",
+      "timeOClock": "Jos kello näyttää {{hour}}:{{minutes}}, paljonko kello on?",
+      "timeHalfPast": "Jos kello näyttää {{hour}}:{{minutes}}, paljonko kello on?",
+      "timeQuarterPast": "Jos kello näyttää {{hour}}:{{minutes}}, paljonko kello on?",
+      "timeQuarterTo": "Jos kello näyttää {{hour}}:{{minutes}}, paljonko kello on?",
+      "money": "Jos jokin maksaa ${{dollars}}.{{cents}}, kuinka monta senttiä se on yhteensä?",
+      "fractionOf": "Paljonko on {{numerator}}/{{denominator}} luvusta {{total}}?",
+      "rectangleArea": "Laske suorakulmion pinta-ala, jonka leveys on {{width}}m ja korkeus {{height}}m.",
+      "rectanglePerimeter": "Laske suorakulmion piiri, jonka leveys on {{width}}m ja korkeus {{height}}m.",
+      "percentageOf": "Paljonko on {{percentage}}% luvusta {{number}}?",
+      "percentage_increase": "Jos luku {{initial}} kasvaa {{percentage}}%, mikä on tulos?",
+      "percentage_decrease": "Jos luku {{initial}} pienenee {{percentage}}%, mikä on tulos?",
+      "addFractions": "{{fraction1}} + {{fraction2}} = ?",
+      "decimalOperation": "{{num1}} {{operator}} {{num2}} = ?",
+      "decimalMultiplication": "{{decimal}} × {{multiplier}} = ?",
+      "algebra": "Jos {{b}} × ? = {{result}}, mikä on puuttuva luku?",
+      "twoStepAlgebra": "Ratkaise x: {{a}}x + {{b}} = {{result}}",
+      "volume": "Laske laatikon tilavuus, jonka pituus on {{length}}cm, leveys {{width}}cm ja korkeus {{height}}cm.",
+      "ratio": "Jos omenoiden ja appelsiinien suhde on {{a}}:{{b}}, ja omenoita on {{newA}}, montako appelsiinia on?",
+      "squareRoot": "Mikä on luvun {{number}} neliöjuuri?",
+      "mean": "Laske näiden lukujen keskiarvo: {{numbers}}"
+    },
+    "answers": {
+      "timeOClock": "kello {{hour}}",
+      "timeHalfPast": "puoli {{hour}}",
+      "timeQuarterPast": "vartti yli {{hour}}",
+      "timeQuarterTo": "varttia vaille {{hour}}"
+    },
+    "shapes": {
+      "circle": "ympyrä",
+      "triangle": "kolmio",
+      "square": "neliö",
+      "rectangle": "suorakulmio"
+    }
+  }

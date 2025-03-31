@@ -1,0 +1,94 @@
+{
+    "hud": {
+      "score": "Score: {{score}}",
+      "lives": "Lives: {{lives}}",
+      "question": "Question {{current}} of {{total}}",
+      "streak": "Streak: {{streak}}",
+      "timeLeft": "Time Left: {{time}}s",
+      "levelLabel": "Level {{level}}"
+    },
+    "actions": {
+      "submit": "Submit",
+      "clear": "Clear",
+      "next": "Next Question",
+      "quit": "Give Up (Scary!)",
+      "playAgain": "Play Again",
+      "answer": "Your Answer:",
+      "returnToMenu": "Return to Menu"
+    },
+    "feedback": {
+      "correct": "Great job! That's correct!",
+      "incorrect": "Oops! That's not right. The answer is {{answer}}.",
+      "timeout": "Oh no! Time's up!",
+      "lifeGained": "Amazing! You gained an extra life!",
+      "lifeLost": "You lost a life! Be careful!",
+      "gameOver": "Game Over!",
+      "victory": "Victory! You completed all questions!",
+      "encouragement": [
+        "You're doing great! Keep going!",
+        "You can do this! I believe in you!",
+        "Keep trying! You're getting better!",
+        "Don't give up! You're making progress!",
+        "That's the way! You're getting the hang of it!"
+      ]
+    },
+    "explanations": {
+      "addition": "Add the numbers together.",
+      "subtraction": "Subtract the second number from the first.",
+      "multiplication": "Multiply the numbers together.",
+      "division": "Divide the first number by the second.",
+      "fractions": "Work with the fraction parts carefully.",
+      "geometry": "Think about the shape properties.",
+      "time": "Remember how to read the clock.",
+      "measurement": "Use the correct units of measurement.",
+      "money": "Convert between dollars and cents correctly.",
+      "area": "Area is length multiplied by width.",
+      "perimeter": "Perimeter is the sum of all sides of a shape.",
+      "volume": "Volume is length × width × height.",
+      "decimals": "Be careful with decimal placement.",
+      "percentages": "Percentage is parts per hundred.",
+      "algebra": "Solve for the unknown variable.",
+      "ratios": "Compare quantities in the same proportion.",
+      "squareRoot": "Find the number that, when multiplied by itself, gives the original number.",
+      "statistics": "Analyze and interpret numerical data.",
+      "counting": "Count carefully and methodically."
+    },
+    "questions": {
+      "addition": "{{a}} + {{b}} = ?",
+      "subtraction": "{{a}} - {{b}} = ?",
+      "multiplication": "{{a}} × {{b}} = ?",
+      "division": "{{a}} ÷ {{b}} = ?",
+      "shapeSides": "How many sides does a {{shape}} have?",
+      "counting": "Count the objects: {{objects}}",
+      "timeOClock": "If the clock shows {{hour}}:{{minutes}}, what time is it?",
+      "timeHalfPast": "If the clock shows {{hour}}:{{minutes}}, what time is it?",
+      "timeQuarterPast": "If the clock shows {{hour}}:{{minutes}}, what time is it?",
+      "timeQuarterTo": "If the clock shows {{hour}}:{{minutes}}, what time is it?",
+      "money": "If something costs ${{dollars}}.{{cents}}, how many cents is that in total?",
+      "fractionOf": "What is {{numerator}}/{{denominator}} of {{total}}?",
+      "rectangleArea": "Find the area of a rectangle with width {{width}}m and height {{height}}m.",
+      "rectanglePerimeter": "Find the perimeter of a rectangle with width {{width}}m and height {{height}}m.",
+      "percentageOf": "What is {{percentage}}% of {{number}}?",
+      "addFractions": "{{fraction1}} + {{fraction2}} = ?",
+      "decimalOperation": "{{num1}} {{operator}} {{num2}} = ?",
+      "decimalMultiplication": "{{decimal}} × {{multiplier}} = ?",
+      "algebra": "If {{b}} × ? = {{result}}, what is the missing number?",
+      "twoStepAlgebra": "Solve for x: {{a}}x + {{b}} = {{result}}",
+      "volume": "Find the volume of a box with length {{length}}cm, width {{width}}cm, and height {{height}}cm.",
+      "ratio": "If the ratio of apples to oranges is {{a}}:{{b}}, and there are {{newA}} apples, how many oranges are there?",
+      "squareRoot": "What is the square root of {{number}}?",
+      "mean": "Find the mean (average) of these numbers: {{numbers}}"
+    },
+    "answers": {
+      "timeOClock": "{{hour}} o'clock",
+      "timeHalfPast": "half past {{hour}}",
+      "timeQuarterPast": "quarter past {{hour}}",
+      "timeQuarterTo": "quarter to {{hour}}"
+    },
+    "shapes": {
+      "circle": "circle",
+      "triangle": "triangle",
+      "square": "square",
+      "rectangle": "rectangle"
+    }
+  }

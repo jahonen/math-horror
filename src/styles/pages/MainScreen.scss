@@ -1,0 +1,147 @@
+// src/styles/pages/MainScreen.scss
+@import "../variables";
+@import "../mixins";
+
+.main-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 70vh;
+  
+  &__header {
+    text-align: center;
+    margin-bottom: 3rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+  }
+  
+  &__title {
+    font-size: 3rem;
+    color: $primary-color;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Creepster', cursive;
+  }
+  
+  &__subtitle {
+    font-size: 1.5rem;
+    color: $text-color;
+    margin-bottom: 2rem;
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 2rem;
+    
+    @include respond-to('medium') {
+      flex-direction: row;
+      justify-content: space-around;
+    }
+  }
+  
+  &__levels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+    min-width: 300px;
+    
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: $accent-color;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    .level-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.7rem;
+      margin-bottom: 1.5rem;
+      width: 100%;
+      
+      @include respond-to('small') {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .level-button {
+      padding: 0.8rem;
+      border: 2px solid $accent-color;
+      background-color: rgba(20, 20, 20, 0.7);
+      color: $text-color;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 1rem;
+      
+      &:hover {
+        background-color: rgba(60, 0, 0, 0.8);
+        transform: translateY(-2px);
+      }
+      
+      &.selected {
+        background-color: rgba(60, 0, 0, 0.9);
+        border-color: $primary-color;
+        color: white;
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+      }
+    }
+    
+    .start-button {
+      @include primary-button;
+      margin-top: 1rem;
+      width: 100%;
+      max-width: 200px;
+      font-size: 1.3rem;
+      padding: 0.8rem 1.2rem;
+    }
+  }
+  
+  &__highscores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+    min-width: 300px;
+    
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: $accent-color;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    // Placeholder for highscores styling
+    .highscore-placeholder {
+      text-align: center;
+      color: $text-color;
+      font-style: italic;
+      
+      &::before {
+        content: "🕯️";
+        margin-right: 0.5rem;
+      }
+      
+      &::after {
+        content: "🕯️";
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}
