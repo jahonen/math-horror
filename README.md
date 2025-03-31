@@ -1,46 +1,103 @@
-# Getting Started with Create React App
+# Math Horror
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Math Horror Logo](src/assets/images/math-horror-logo.png)
 
-## Available Scripts
+A spooky math learning game that challenges players with increasingly difficult math problems across multiple difficulty levels. Face your math fears and improve your skills while racing against the clock!
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Six Difficulty Levels**: From basic arithmetic to complex algebra
+- **Multilingual Support**: Available in English, Finnish, and Greek
+- **Immersive Sound Effects**: Spooky audio enhances the gaming experience
+- **High Score System**: Track your progress and compete with yourself
+- **Lives System**: Multiple chances to solve problems
+- **Streak Rewards**: Earn extra lives by answering consecutive questions correctly
+- **Responsive Design**: Play on desktop or mobile devices
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Game Mechanics
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Questions**: Each level presents a series of math questions appropriate to the difficulty
+- **Timer**: Answer questions before time runs out
+- **Lives**: Start with 3 lives, lose one for incorrect answers or timeouts
+- **Scoring**: Earn points based on how quickly you answer correctly
+- **Life Bonus**: Remaining lives add bonus points to your final score (111 points per life)
+- **Streaks**: Get 10 correct answers in a row to earn an extra life
 
-### `npm test`
+## Technology Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Frontend**: React with TypeScript
+- **State Management**: React Context API
+- **Styling**: SCSS with responsive design
+- **Internationalization**: i18next for multilingual support
+- **Sound**: Howler.js for audio management
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Node.js (v14 or higher)
+- npm or yarn
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Installation
 
-### `npm run eject`
+1. Clone the repository:
+   ```
+   git clone https://github.com/jahonen/math-horror.git
+   cd math-horror
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Start the development server:
+   ```
+   npm start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+4. Open [http://localhost:3000](http://localhost:3000) to play the game
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Building for Production
 
-## Learn More
+```
+npm run build
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This creates an optimized production build in the `build` folder.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project Structure
+
+- `/public` - Static assets and localization files
+- `/src` - Source code
+  - `/assets` - Images and other static resources
+  - `/components` - Reusable React components
+  - `/contexts` - React context providers (Game and Sound)
+  - `/locales` - Translation files (en, fi, el)
+  - `/pages` - Main screen components
+  - `/services` - Question generation and game logic
+  - `/styles` - SCSS stylesheets
+  - `/types` - TypeScript type definitions
+
+## Internationalization
+
+The game supports three languages:
+- English (default)
+- Finnish
+- Greek
+
+Language files are located in `/src/locales/[language-code]/`.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Sound effects from [source]
+- Inspiration from classic educational games
+- Special thanks to all math teachers who make learning fun!
